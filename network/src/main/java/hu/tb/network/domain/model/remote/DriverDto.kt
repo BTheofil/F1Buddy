@@ -1,6 +1,6 @@
 package hu.tb.network.domain.model.remote
 
-import hu.tb.network.domain.model.DriverInformation
+import hu.tb.network.domain.model.DriverInfo
 
 data class DriverDto(
     val broadcast_name: String,
@@ -17,8 +17,8 @@ data class DriverDto(
     val team_name: String
 ) {
 
-    fun toDriverInformation(): DriverInformation =
-        DriverInformation(
+    fun toDriverInformation(): DriverInfo =
+        DriverInfo(
             broadcastName = broadcast_name,
             countryCode = country_code,
             driverNumber = driver_number,

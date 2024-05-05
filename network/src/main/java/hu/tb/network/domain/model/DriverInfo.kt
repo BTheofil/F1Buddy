@@ -1,6 +1,6 @@
 package hu.tb.network.domain.model
 
-data class DriverInformation(
+data class DriverInfo(
     val broadcastName: String,
     val countryCode: String,
     val driverNumber: Int,

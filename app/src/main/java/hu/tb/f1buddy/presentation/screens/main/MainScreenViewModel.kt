@@ -3,7 +3,7 @@ package hu.tb.f1buddy.presentation.screens.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import hu.tb.network.domain.model.DriverInformation
+import hu.tb.network.domain.model.DriverInfo
 import hu.tb.network.domain.repository.DriverRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +20,7 @@ class MainScreenViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     data class UiState(
-        val data: DriverInformation? = null,
+        val data: DriverInfo? = null,
         val isLoading: Boolean = false,
         val error: String? = null,
     )
