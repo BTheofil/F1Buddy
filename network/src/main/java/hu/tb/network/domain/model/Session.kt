@@ -1,6 +1,6 @@
 package hu.tb.network.domain.model
 
-data class SessionInfo(
+data class Session(
     val circuitKey: Int,
     val circuitShortName: String,
     val countryCode: String,

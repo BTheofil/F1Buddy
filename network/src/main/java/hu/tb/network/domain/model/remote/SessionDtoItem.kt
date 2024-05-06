@@ -1,6 +1,6 @@
 package hu.tb.network.domain.model.remote
 
-import hu.tb.network.domain.model.SessionInfo
+import hu.tb.network.domain.model.Session
 
 data class SessionDto(
     val circuit_key: Int,
@@ -19,7 +19,7 @@ data class SessionDto(
     val year: Int
 ) {
     fun toSessionInfo() =
-        SessionInfo(
+        Session(
             circuitKey = circuit_key,
             circuitShortName = circuit_short_name,
             countryCode = country_code,

@@ -4,9 +4,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import hu.tb.network.data.repository.DriverRepositoryImpl
+import hu.tb.network.data.repository.OpenF1RepositoryImpl
 import hu.tb.network.data.retrofit.OpenF1Api
-import hu.tb.network.domain.repository.DriverRepository
+import hu.tb.network.domain.repository.OpenF1Repository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -26,9 +26,8 @@ object NetworkModule {
             .build()
             .create(OpenF1Api::class.java)
 
-
     @Provides
     @Singleton
-    fun provideDriverRepository(api: OpenF1Api): DriverRepository = DriverRepositoryImpl(network = api)
+    fun provideDriverRepository(openF1Api: OpenF1Api, ): OpenF1Repository = OpenF1RepositoryImpl(openF1Api = openF1Api)
 
 }
