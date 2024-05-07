@@ -1,6 +1,8 @@
 package hu.tb.network.domain.model.remote
 
 import hu.tb.network.domain.model.Session
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 data class SessionDto(
     val circuit_key: Int,
@@ -25,8 +27,14 @@ data class SessionDto(
             countryCode = country_code,
             countryKey = country_key,
             countryName = country_name,
-            dateEnd = date_end,
-            dateStart = date_start,
+            dateEnd = LocalDate.parse(
+                date_end,
+                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
+            ),
+            dateStart = LocalDate.parse(
+                date_start,
+                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
+            ),
             gmtOffset = gmt_offset,
             location = location,
             meetingKey = meeting_key,

@@ -29,21 +29,20 @@ class OpenF1RepositoryImpl(
         sessionParam: SessionParam?
     ): Result<List<Session>> =
         try {
+            val sessionsList =
+                if (sessionParam?.dateParam != null) {
+                    openF1Api.getSession(
+                        "sessions?date_start>=" + sessionParam.dateParam.startDate + "&" +
+                                "date_end<=" + sessionParam.dateParam.endData,
+                    )
+                } else if (sessionParam?.year != null) {
+                    openF1Api.getSession("sessions?year=" + sessionParam.year)
+                } else {
+                    openF1Api.getSession("sessions")
+                }
 
-            openF1Api.getSession(
-                "sessions?date_start>=" + sessionParam?.dateParam?.startDate + "&" +
-                "date_end<=" + sessionParam?.dateParam?.endData,
-            ).request().url().toString()
-
-           /* val dto = openF1Api.getSession(
-                sessionParam?.dateParam?.startDate,
-                sessionParam?.dateParam?.endData,
-                sessionParam?.year
-            )*/
             Result.success(
-                emptyList()
-                //dto.execute().body()!!.map { it.toSessionInfo() }
-               // dto.map { it.toSessionInfo() }
+                sessionsList.map { it.toSessionInfo() }
             )
         } catch (e: Exception) {
             e.printStackTrace()
